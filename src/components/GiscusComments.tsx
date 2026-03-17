@@ -16,7 +16,9 @@ const GiscusComments = ({ issueNumber }: GiscusCommentsProps) => {
     script.src = "https://giscus.app/client.js";
     script.setAttribute("data-repo", `${REPO_OWNER}/${REPO_NAME}`);
     script.setAttribute("data-repo-id", "");
+    script.setAttribute("data-category-id", "");
     script.setAttribute("data-mapping", "number");
+    script.setAttribute("data-strict", "1");
     script.setAttribute("data-term", String(issueNumber));
     script.setAttribute("data-reactions-enabled", "1");
     script.setAttribute("data-emit-metadata", "0");
