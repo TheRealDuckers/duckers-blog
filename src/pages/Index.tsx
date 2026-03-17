@@ -1,3 +1,4 @@
+import { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -6,10 +7,35 @@ import BlogHeader from "@/components/BlogHeader";
 import BlogFooter from "@/components/BlogFooter";
 
 const Index = () => {
+  const [search, setSearch] = useState("");
+  const [activeLabel, setActiveLabel] = useState<string | null>(null);
+
   const { data: posts, isLoading, error } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchIssues,
   });
+
+  const visiblePosts = useMemo(() => {
+    if (!posts) return [];
+    return posts
+      .filter((p) => !p.title.startsWith("["))
+      .filter((p) => {
+        const matchesSearch =
+          !search ||
+          p.title.toLowerCase().includes(search.toLowerCase()) ||
+          p.body.toLowerCase().includes(search.toLowerCase());
+        const matchesLabel =
+          !activeLabel || p.labels.some((l) => l.name === activeLabel);
+        return matchesSearch && matchesLabel;
+      });
+  }, [posts, search, activeLabel]);
+
+  const allLabels = useMemo(() => {
+    if (!posts) return [];
+    const set = new Set<string>();
+    posts.filter((p) => !p.title.startsWith("[")).forEach((p) => p.labels.forEach((l) => set.add(l.name)));
+    return Array.from(set).sort();
+  }, [posts]);
 
   return (
     <>
@@ -23,6 +49,45 @@ const Index = () => {
         <BlogHeader />
 
         <main className="flex-1 max-w-2xl mx-auto w-full px-6 py-10">
+          {posts && posts.length > 0 && (
+            <div className="mb-10 space-y-4">
+              <input
+                type="text"
+                placeholder="Search posts…"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40 transition-shadow"
+              />
+              {allLabels.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setActiveLabel(null)}
+                    className={`text-xs px-3 py-1 rounded-full font-body transition-colors ${
+                      !activeLabel
+                        ? "bg-accent text-accent-foreground"
+                        : "bg-secondary text-secondary-foreground hover:bg-accent/20"
+                    }`}
+                  >
+                    All
+                  </button>
+                  {allLabels.map((label) => (
+                    <button
+                      key={label}
+                      onClick={() => setActiveLabel(activeLabel === label ? null : label)}
+                      className={`text-xs px-3 py-1 rounded-full font-body transition-colors ${
+                        activeLabel === label
+                          ? "bg-accent text-accent-foreground"
+                          : "bg-secondary text-secondary-foreground hover:bg-accent/20"
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
           {isLoading && (
             <div className="space-y-8">
               {[1, 2, 3].map((i) => (
@@ -39,9 +104,15 @@ const Index = () => {
             <p className="text-destructive font-body">Failed to load posts. Please try again later.</p>
           )}
 
-          {posts && (
+          {posts && visiblePosts.length === 0 && (
+            <p className="text-muted-foreground font-body text-center py-12">
+              No posts found{search || activeLabel ? " matching your search." : "."}
+            </p>
+          )}
+
+          {visiblePosts.length > 0 && (
             <div className="space-y-10">
-              {posts.filter(p => !p.title.startsWith("[")).map((post) => (
+              {visiblePosts.map((post) => (
                 <article key={post.number} className="group">
                   <time className="text-xs text-muted-foreground font-body uppercase tracking-wider">
                     {new Date(post.created_at).toLocaleDateString("en-US", {
