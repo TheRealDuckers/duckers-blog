@@ -33,7 +33,7 @@ const Index = () => {
   const allLabels = useMemo(() => {
     if (!posts) return [];
     const set = new Set<string>();
-    posts.filter((p) => !p.title.startsWith("[")).forEach((p) => p.labels.forEach((l) => set.add(l.name)));
+    posts.filter((p) => !p.title.startsWith("[") && p.user.login === "TheRealDuckers").forEach((p) => p.labels.forEach((l) => set.add(l.name)));
     return Array.from(set).sort();
   }, [posts]);
 
