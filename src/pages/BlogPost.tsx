@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { fetchIssue, getExcerpt } from "@/lib/github";
+import { fetchIssue, fetchIssues, getExcerpt, getSlug } from "@/lib/github";
 import BlogHeader from "@/components/BlogHeader";
 import BlogFooter from "@/components/BlogFooter";
 import ShareButtons from "@/components/ShareButtons";
@@ -18,6 +18,15 @@ const BlogPost = () => {
     queryFn: () => fetchIssue(issueNumber),
     enabled: issueNumber > 0,
   });
+
+  const { data: allPosts } = useQuery({
+    queryKey: ["posts"],
+    queryFn: fetchIssues,
+  });
+
+  const readNext = allPosts
+    ?.filter((p) => !p.title.startsWith("[") && p.user.login === "TheRealDuckers" && p.number !== issueNumber)
+    ?.slice(0, 3);
 
   const pageUrl = window.location.href;
 
@@ -123,6 +132,28 @@ const BlogPost = () => {
               <div className="mt-10 pt-6 border-t border-border">
                 <ShareButtons url={pageUrl} title={post.title} />
               </div>
+
+              {readNext && readNext.length > 0 && (
+                <div className="mt-10 pt-6 border-t border-border">
+                  <h3 className="font-display text-xl font-semibold text-foreground mb-4">Read Next</h3>
+                  <div className="space-y-4">
+                    {readNext.map((p) => (
+                      <Link
+                        key={p.number}
+                        to={`/post/${getSlug(p)}`}
+                        className="block group"
+                      >
+                        <h4 className="font-body text-base text-foreground group-hover:text-accent transition-colors font-medium">
+                          {p.title}
+                        </h4>
+                        <p className="text-sm text-muted-foreground font-body mt-0.5 line-clamp-2">
+                          {getExcerpt(p.body, 100)}
+                        </p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <GiscusComments issueNumber={post.number} />
             </article>
