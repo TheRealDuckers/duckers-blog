@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { fetchIssue, getExcerpt } from "@/lib/github";
+import { fetchIssue, fetchIssues, getExcerpt, getSlug } from "@/lib/github";
 import BlogHeader from "@/components/BlogHeader";
 import BlogFooter from "@/components/BlogFooter";
 import ShareButtons from "@/components/ShareButtons";
