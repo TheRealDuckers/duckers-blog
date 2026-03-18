@@ -18,7 +18,7 @@ const Index = () => {
   const visiblePosts = useMemo(() => {
     if (!posts) return [];
     return posts
-      .filter((p) => !p.title.startsWith("["))
+      .filter((p) => !p.title.startsWith("[") && p.user.login === "TheRealDuckers")
       .filter((p) => {
         const matchesSearch =
           !search ||
