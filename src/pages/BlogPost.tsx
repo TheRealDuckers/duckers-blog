@@ -19,6 +19,15 @@ const BlogPost = () => {
     enabled: issueNumber > 0,
   });
 
+  const { data: allPosts } = useQuery({
+    queryKey: ["posts"],
+    queryFn: fetchIssues,
+  });
+
+  const readNext = allPosts
+    ?.filter((p) => !p.title.startsWith("[") && p.user.login === "TheRealDuckers" && p.number !== issueNumber)
+    ?.slice(0, 3);
+
   const pageUrl = window.location.href;
 
   return (
