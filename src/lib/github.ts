@@ -1,4 +1,8 @@
+// @ts-ignore
 import postsData from "@/data/posts.json";
+
+export const REPO_OWNER = "TheRealDuckers";
+export const REPO_NAME = "blog.duckers.dev";
 
 export interface GitHubIssue {
   number: number;
