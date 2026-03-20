@@ -1,5 +1,4 @@
-const REPO_OWNER = "TheRealDuckers";
-const REPO_NAME = "blog.duckers.dev";
+import postsData from "@/data/posts.json";
 
 export interface GitHubIssue {
   number: number;
@@ -11,20 +10,14 @@ export interface GitHubIssue {
   user: { login: string; avatar_url: string };
 }
 
-export async function fetchIssues(): Promise<GitHubIssue[]> {
-  const res = await fetch(
-    `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues?state=open&sort=created&direction=desc&per_page=50`
-  );
-  if (!res.ok) throw new Error("Failed to fetch posts");
-  return res.json();
+const posts: GitHubIssue[] = postsData as GitHubIssue[];
+
+export function getAllPosts(): GitHubIssue[] {
+  return posts;
 }
 
-export async function fetchIssue(number: number): Promise<GitHubIssue> {
-  const res = await fetch(
-    `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${number}`
-  );
-  if (!res.ok) throw new Error("Failed to fetch post");
-  return res.json();
+export function getPostByNumber(num: number): GitHubIssue | undefined {
+  return posts.find((p) => p.number === num);
 }
 
 export function getSlug(issue: GitHubIssue): string {
@@ -35,5 +28,3 @@ export function getExcerpt(body: string, maxLength = 160): string {
   const plain = body.replace(/[#*`>\[\]()!_~]/g, "").replace(/\n+/g, " ").trim();
   return plain.length > maxLength ? plain.slice(0, maxLength) + "…" : plain;
 }
-
-export { REPO_OWNER, REPO_NAME };

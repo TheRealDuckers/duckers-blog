@@ -1,9 +1,8 @@
 import { useParams, Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { fetchIssue, fetchIssues, getExcerpt, getSlug } from "@/lib/github";
+import { getAllPosts, getPostByNumber, getExcerpt, getSlug } from "@/lib/github";
 import BlogHeader from "@/components/BlogHeader";
 import BlogFooter from "@/components/BlogFooter";
 import ShareButtons from "@/components/ShareButtons";
@@ -12,21 +11,10 @@ import GiscusComments from "@/components/GiscusComments";
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const issueNumber = parseInt(slug?.split("-")[0] || "0", 10);
-
-  const { data: post, isLoading, error } = useQuery({
-    queryKey: ["post", issueNumber],
-    queryFn: () => fetchIssue(issueNumber),
-    enabled: issueNumber > 0,
-  });
-
-  const { data: allPosts } = useQuery({
-    queryKey: ["posts"],
-    queryFn: fetchIssues,
-  });
-
-  const readNext = allPosts
-    ?.filter((p) => !p.title.startsWith("[") && p.user.login === "TheRealDuckers" && p.number !== issueNumber)
-    ?.slice(0, 3);
+  const post = getPostByNumber(issueNumber);
+  const readNext = getAllPosts()
+    .filter((p) => p.number !== issueNumber)
+    .slice(0, 3);
 
   const pageUrl = window.location.href;
 
@@ -70,18 +58,8 @@ const BlogPost = () => {
             ← Back to all posts
           </Link>
 
-          {isLoading && (
-            <div className="animate-pulse space-y-4">
-              <div className="h-8 bg-muted rounded w-3/4" />
-              <div className="h-4 bg-muted rounded w-1/4" />
-              <div className="h-4 bg-muted rounded w-full mt-8" />
-              <div className="h-4 bg-muted rounded w-5/6" />
-              <div className="h-4 bg-muted rounded w-4/6" />
-            </div>
-          )}
-
-          {error && (
-            <p className="text-destructive font-body">Failed to load this post.</p>
+          {!post && (
+            <p className="text-destructive font-body">Post not found.</p>
           )}
 
           {post && (
@@ -133,7 +111,7 @@ const BlogPost = () => {
                 <ShareButtons url={pageUrl} title={post.title} />
               </div>
 
-              {readNext && readNext.length > 0 && (
+              {readNext.length > 0 && (
                 <div className="mt-10 pt-6 border-t border-border">
                   <h3 className="font-display text-xl font-semibold text-foreground mb-4">Read Next</h3>
                   <div className="space-y-4">
