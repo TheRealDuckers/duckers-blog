@@ -3,10 +3,11 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const PROJECT_ROOT = path.resolve(__dirname, "..");
 
 const REPO_OWNER = "TheRealDuckers";
 const REPO_NAME = "blog.duckers.dev";
-const OUT_DIR = path.join(__dirname, "src", "data");
+const OUT_DIR = path.join(PROJECT_ROOT, "src", "data");
 
 async function fetchAllIssues() {
   const res = await fetch(
