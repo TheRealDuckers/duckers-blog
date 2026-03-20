@@ -1,41 +1,33 @@
 import { useState, useMemo } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { fetchIssues, getSlug, getExcerpt } from "@/lib/github";
+import { getAllPosts, getSlug, getExcerpt } from "@/lib/github";
 import BlogHeader from "@/components/BlogHeader";
 import BlogFooter from "@/components/BlogFooter";
+
+const posts = getAllPosts();
 
 const Index = () => {
   const [search, setSearch] = useState("");
   const [activeLabel, setActiveLabel] = useState<string | null>(null);
 
-  const { data: posts, isLoading, error } = useQuery({
-    queryKey: ["posts"],
-    queryFn: fetchIssues,
-  });
-
   const visiblePosts = useMemo(() => {
-    if (!posts) return [];
-    return posts
-      .filter((p) => !p.title.startsWith("[") && p.user.login === "TheRealDuckers")
-      .filter((p) => {
-        const matchesSearch =
-          !search ||
-          p.title.toLowerCase().includes(search.toLowerCase()) ||
-          p.body.toLowerCase().includes(search.toLowerCase());
-        const matchesLabel =
-          !activeLabel || p.labels.some((l) => l.name === activeLabel);
-        return matchesSearch && matchesLabel;
-      });
-  }, [posts, search, activeLabel]);
+    return posts.filter((p) => {
+      const matchesSearch =
+        !search ||
+        p.title.toLowerCase().includes(search.toLowerCase()) ||
+        p.body.toLowerCase().includes(search.toLowerCase());
+      const matchesLabel =
+        !activeLabel || p.labels.some((l) => l.name === activeLabel);
+      return matchesSearch && matchesLabel;
+    });
+  }, [search, activeLabel]);
 
   const allLabels = useMemo(() => {
-    if (!posts) return [];
     const set = new Set<string>();
-    posts.filter((p) => !p.title.startsWith("[") && p.user.login === "TheRealDuckers").forEach((p) => p.labels.forEach((l) => set.add(l.name)));
+    posts.forEach((p) => p.labels.forEach((l) => set.add(l.name)));
     return Array.from(set).sort();
-  }, [posts]);
+  }, []);
 
   return (
     <>
@@ -49,7 +41,7 @@ const Index = () => {
         <BlogHeader />
 
         <main className="flex-1 max-w-2xl mx-auto w-full px-6 py-10">
-          {posts && posts.length > 0 && (
+          {posts.length > 0 && (
             <div className="mb-10 space-y-4">
               <input
                 type="text"
@@ -88,25 +80,13 @@ const Index = () => {
             </div>
           )}
 
-          {isLoading && (
-            <div className="space-y-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="animate-pulse">
-                  <div className="h-4 bg-muted rounded w-24 mb-3" />
-                  <div className="h-7 bg-muted rounded w-3/4 mb-2" />
-                  <div className="h-4 bg-muted rounded w-full" />
-                </div>
-              ))}
-            </div>
+          {posts.length === 0 && (
+            <p className="text-muted-foreground font-body text-center py-12">No posts yet.</p>
           )}
 
-          {error && (
-            <p className="text-destructive font-body">Failed to load posts. Please try again later.</p>
-          )}
-
-          {posts && visiblePosts.length === 0 && (
+          {visiblePosts.length === 0 && posts.length > 0 && (
             <p className="text-muted-foreground font-body text-center py-12">
-              No posts found{search || activeLabel ? " matching your search." : "."}
+              No posts found matching your search.
             </p>
           )}
 

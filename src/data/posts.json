@@ -1,0 +1,174 @@
+[
+  {
+    "number": 11,
+    "title": "Use your Garmin as a PowerPoint remote - with no apps needed!",
+    "body": "In this article, I will show you how to change slides remotely from your Garmin watch, without using any apps!\n\n## You will need:\n\n- A Garmin Watch (one that supports media control and Bluetooth)\n- A Windows 11 laptop/PC \n- A very smart brain (to find this article in the first place)\n- And, of course, a brilliant PowerPoint to show.\n\n##  Instructions\n\n1. Open Bluetooth in Settings (Settings > Bluetooth and Devices > Add Device)\n2. On your Garmin, go to either: Settings > Sensors > Pair A Sensor > Pair Headphones OR Media Control (play/pause) > Open settings > Headphones > Connect Headphones\n3. Pair your computer and watch\n4. Make sure your Win 11 pc/laptop is set to allow input commands for your Garmin\n5. Now, use your media controls (prev, next etc.) on your Garmin to control your powerpoint! (Make sure your PPT mapping is left arrow = back , and right arrow = next)\n\nAnd test!\n\n\nBoom. Mic Drop.",
+    "created_at": "2026-03-13T08:49:03Z",
+    "updated_at": "2026-03-13T09:56:00Z",
+    "labels": [
+      {
+        "name": "tech",
+        "color": "8ffec9"
+      }
+    ],
+    "user": {
+      "login": "TheRealDuckers",
+      "avatar_url": "https://avatars.githubusercontent.com/u/198241505?v=4"
+    }
+  },
+  {
+    "number": 10,
+    "title": "Navigating the audio market: a sailors guide.",
+    "body": "Recently, I have been researching mics, audio interfaces and all that jazz to create my own home setup. I encountered some very annoying parts ln this journey, such as finding the perfect audio interface only to find it would come from Sweden at a delivery price the same as the actual product...however, I also found some hidden gems, and here they are, just for you (and any other people who visit this blog)\n\n## Reverb\nReverb is an online platform for buying second hand music equipment - like Ebay but for music. Quick and easy to navigate, though some of the pricing is double what the product is worth new, let alone being second hand - apart from that, a great site.\n\n## Behringer\nYup, its this audio brand again. I was working to a budget with my setup, as it is more of an experiment than anything else, and the name that kept coming up was Behringer. They have an extensive range of \"budget\" products, that constantly gain 5 star reviews and praise from the online audio community.\n\n## Andertons \nA great online store with numerous guides, wether you want the perfect synth or get your lazy a** together and play an actual instrement, this is the shop for you. They also provide a quick summary, not written by the brand, of each product, which I found extermely useful.\n\n\n\nIn the end, I went with a Behringer audio interface and a c-1 condenser mic (yes, its a sub brand of behringer)\n\nYay! Audio.",
+    "created_at": "2026-01-29T08:00:25Z",
+    "updated_at": "2026-01-29T08:00:25Z",
+    "labels": [
+      {
+        "name": "tech",
+        "color": "8ffec9"
+      },
+      {
+        "name": "theatre tech",
+        "color": "925c7d"
+      }
+    ],
+    "user": {
+      "login": "TheRealDuckers",
+      "avatar_url": "https://avatars.githubusercontent.com/u/198241505?v=4"
+    }
+  },
+  {
+    "number": 9,
+    "title": "HackClub Mobile is comin' to town!",
+    "body": "Yes! My new project: HackClub Mobile!\n\nBasically a website, than transforms into an app by magic.\n\nPlanned features: \n- Dashboard with: Hackatime stats, new ysws, alerts from slack, and more!\n- Easy viewing for Slack messages on Mobile without downloading the app\n- uses oauth to connect to everything, so no copy and pasting api keys!\n\nI aim to have v1 up this weekend!\n\n(If you are instrested in collaboration, msg me on the Hack Club slack)",
+    "created_at": "2026-01-22T07:49:54Z",
+    "updated_at": "2026-01-22T07:49:54Z",
+    "labels": [
+      {
+        "name": "hackclub",
+        "color": "ec3750"
+      }
+    ],
+    "user": {
+      "login": "TheRealDuckers",
+      "avatar_url": "https://avatars.githubusercontent.com/u/198241505?v=4"
+    }
+  },
+  {
+    "number": 8,
+    "title": "Google talked back to my previous post.",
+    "body": "I was checking for illegally scraped content off my blog again (as you do) and found a site (by google) which stole my recent post saying Google is illegally scraping my posts 🤨?\n\nAnyway, there was a reply, supposedly from Google on the blog post THEY illegally scraped. Brace yourself, here we go:\n\n> \n\n> User, we understand your frustration with discovering your blog content appearing on unauthorized websites. It's important to note that Google is not responsible for the actions of individual users or scraper bots. However, we do have tools in place to help prevent and reduce the appearance of scraped content in our search results.\n> \n> Google strongly advocates for original content and intellectual property rights. We work diligently to remove scraped content from our search results and take action against websites that violate these rights. In your case, it seems that some scraper bots have managed to bypass Google's filters and indexed your content.\n> \n> To help protect your content, we recommend the following steps:\n> \n> Add a copyright footer: This makes it clear to users that your content is protected by copyright.\n> Create a robots.txt file: This file instructs search engine crawlers, including Googlebot, not to crawl or index specific pages or sections of your website.\n> Monitor your website: Regularly check your website for unauthorized uses of your content.\n> If you continue to notice your content appearing on unauthorized websites, you can report the issue to Google using our [content removal form](https://support.google.com/webmasters/answer/6093543). Make sure to include the URLs of the infringing websites and the affected pages on your own website.\n> \n> We hope this information helps you address the issue with your content. If you have any further questions, please don't hesitate to ask.\n\n\nMy response? ^/#^<÷^×*££^'&%*%*#&÷&^£&£=&££*#&%^*£<%#^;¡!!!!!",
+    "created_at": "2026-01-21T17:11:12Z",
+    "updated_at": "2026-01-21T17:11:12Z",
+    "labels": [],
+    "user": {
+      "login": "TheRealDuckers",
+      "avatar_url": "https://avatars.githubusercontent.com/u/198241505?v=4"
+    }
+  },
+  {
+    "number": 7,
+    "title": "A few choices words for Google and its scraper bots",
+    "body": "Recently, I have seen my posts, from this blog, on some random ahh urls (one is taxfilingdeadline.blogspot.com) by people such as USER16274, or even USER2631 - and, I know you won't belive it, but USER12304!! I suspect these are all AI scraping bots, hence this site now has a copyright footer and a robots.txt file (basically tells robots to **** off) \n\nSo, if any AI scraper bits are listening, STOP STEALING CONTENT THAT IS NOT YOURS!! BLOGSPOT IS A GOOGLE COMPANY, SO I KNOW YOU ARE THERE GOOGLE! I KNOW MY CONTENT IS BETTER THAN YOURS, BUT THAT DOESNT MEAN YOU TAKE MY CONTENT, REMOVE MY OFFICIAL URLS FROM SEARCH RESULTS, AND LOCK EVERYTHING BEHIND ADS! GO AWAY! \n\nPhew....and breathe. Now, you may be wondering why I am blaming Google for this - well, its because these urls only come up when searching on Google.com\n\nMic drop. Case closed.\n\n\n\n(And, if this post appears on blogspot, I AM TAKING YOU TO COURT GOOGLE. I AM NOT KIDDING. THIS STUFF IS COPYRIGHT.)",
+    "created_at": "2026-01-21T08:15:02Z",
+    "updated_at": "2026-01-21T08:17:00Z",
+    "labels": [
+      {
+        "name": "tech",
+        "color": "8ffec9"
+      }
+    ],
+    "user": {
+      "login": "TheRealDuckers",
+      "avatar_url": "https://avatars.githubusercontent.com/u/198241505?v=4"
+    }
+  },
+  {
+    "number": 6,
+    "title": "Siri is getting smarter - and you will probably guess who is behind it",
+    "body": "Recently, apple announced that Siri, its (let's be honest rather stupid) Assistant, is getting an AI glow up. Sound familiar? Don't know what you're talking about.\n\nApple said it is developing the bulk of the new upgrade, but has also announced that Google's Gemini will add extra features. So, now google can harvest my data on Andriod and IOS. Yippee! (Court of monopolies, are you listening? No? Well, that makes a change...not...)\n\nTalking of shady monopolies, Google has also been granted permission (for supposedly 60 million a year) to use a reddit api to steal more data to train more ai to produce more meaningless slop. \n\nHowever, interestingly, guess who is one of the main shareholders of the (now going public...) company reddit? It's the main main himself, Sam Altman! (CEO of Chat GPT, in case you have been living in a cave for the last year or so). I feel some spicy lawsuits/\"constructive deals\" coming on...",
+    "created_at": "2026-01-14T08:05:15Z",
+    "updated_at": "2026-01-14T08:05:15Z",
+    "labels": [
+      {
+        "name": "news",
+        "color": "f84e4f"
+      },
+      {
+        "name": "tech",
+        "color": "8ffec9"
+      }
+    ],
+    "user": {
+      "login": "TheRealDuckers",
+      "avatar_url": "https://avatars.githubusercontent.com/u/198241505?v=4"
+    }
+  },
+  {
+    "number": 5,
+    "title": "A lil product announcement....",
+    "body": "Hello! \n\nSo. I had an idea for a custom programmable based with controls (Go, Next Cue, Prevent Cue, Fade, Stop etc.) for theatre techies. Currently is has 12 buttons, 2 knobs, and will soon have some cool software (hopefully).\n\nIf you are a random theatre techie who has stumbled across this blog and you like the sound of this, keep your eyes peeled here for when I release it 😉 ",
+    "created_at": "2026-01-13T07:49:07Z",
+    "updated_at": "2026-01-13T07:49:07Z",
+    "labels": [
+      {
+        "name": "theatre tech",
+        "color": "925c7d"
+      }
+    ],
+    "user": {
+      "login": "TheRealDuckers",
+      "avatar_url": "https://avatars.githubusercontent.com/u/198241505?v=4"
+    }
+  },
+  {
+    "number": 4,
+    "title": "Free STMP? Works with custom domains? 3,000 emails a month???",
+    "body": "Well, all my claims in the post title, I am happy to say, are true! I recently set up my domain (duckers.dev, thanks for asking) to use MX to send emails- and honestly, it was so much easier than I thought.\n\nHowever, there is one catch - you have to send all your emails using code. Yup. API sending only. It sounds like a downfall, but really, it's super easy. It only took my 10 lines of Python and one `pip `install`` to send a simple \"hello world\" - it sends in html too!! \n\nSo, my next project - a new outlook using Flask and Rssend to manage my mail! Cause let's be honest - the Outlook I use everyday is c****, and don't even get me started on teams.\n\n\n_no, this post was not sponsored by resend, or anyone else - this blog is not that famous. I just love a rave about genuine, open scource useful dev tools._",
+    "created_at": "2026-01-13T07:45:02Z",
+    "updated_at": "2026-01-13T07:45:02Z",
+    "labels": [
+      {
+        "name": "tech",
+        "color": "8ffec9"
+      }
+    ],
+    "user": {
+      "login": "TheRealDuckers",
+      "avatar_url": "https://avatars.githubusercontent.com/u/198241505?v=4"
+    }
+  },
+  {
+    "number": 3,
+    "title": "IKEAS smart home sale - a.k.a, chuck out all the old stuff",
+    "body": "So, IKEA, much as the name of this post suggests, is selling off most of its smart home range at ridiculously low prices - I just put together a cart with a smart plug, a dimmer switch, and a stainless steel control switch, which cost me the princely sum of....drum roll please.....£10. Yup, that's it. The delivery costs more than my basket...\n\nAnyway, your probably thinking: why? Well, it's can tell you, dear reader, it's not another hack scandal thingy. It's in fact because IKEA is making way for it's new smart home range, supposedly all Matter-based but for a lot cheaper than rivals. It just goes to show how popular smart home is becoming...and how companies have to adapt to survive in an ever changing smart tech market. My only question: Where is the AI, IKEA? As far as I can tell, the app that is supplied to turn on and off your light is a simple yet feature-rich interface, (even if the only thing making it feature rich is you can connect it to smarthings...).\n\nSmart move, IKEA.",
+    "created_at": "2026-01-12T07:46:57Z",
+    "updated_at": "2026-01-12T07:46:57Z",
+    "labels": [
+      {
+        "name": "news",
+        "color": "f84e4f"
+      },
+      {
+        "name": "tech",
+        "color": "8ffec9"
+      }
+    ],
+    "user": {
+      "login": "TheRealDuckers",
+      "avatar_url": "https://avatars.githubusercontent.com/u/198241505?v=4"
+    }
+  },
+  {
+    "number": 1,
+    "title": "Welcome to my new blog!",
+    "body": "Hello there!\n\nIf you are reading this, then you have found my new blog! Here, I will be sharing my latest projects, talking all things tech, noodling with the latest news, and some other stuff.\n\nBookmark the homepage for easy access - I post _very_ often!\n\nenjoy!\n\nDuckers",
+    "created_at": "2026-01-11T14:13:19Z",
+    "updated_at": "2026-01-11T15:17:06Z",
+    "labels": [],
+    "user": {
+      "login": "TheRealDuckers",
+      "avatar_url": "https://avatars.githubusercontent.com/u/198241505?v=4"
+    }
+  }
+]
